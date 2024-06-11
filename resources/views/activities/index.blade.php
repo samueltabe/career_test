@@ -4,16 +4,26 @@
 
 <!-- BEGIN: Content -->
 <div class="content">
+    @if (session()->has('success'))
+    <div class="flash-message absolute left-1/2 transform -translate-x-1/2 bg-green-600 bg-opacity-75 p-4 w-1/2 text-white">
+        {{ session()->get('success') }}
+    </div>
+    @endif
+    @if (session()->has('error'))
+    <div class="flash-message absolute left-1/2 transform -translate-x-1/2 bg-red-600 bg-opacity-75 p-4 w-1/2 text-white">
+        {{ session()->get('error') }}
+    </div>
+    @endif
     <h2 class="intro-y text-lg font-medium mt-10">
         Activity List
     </h2>
+
     <div class="grid grid-cols-12 gap-6 mt-5">
         <div class="intro-y col-span-8 flex flex-wrap sm:flex-nowrap items-center mt-2">
             <a href="{{ route('activities.create') }}" class="btn btn-primary shadow-md mr-2">Add New Activity</a>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto">
                 <div class="w-56 relative text-slate-500">
-                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
-                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+                    
                 </div>
             </div>
         </div>
@@ -82,13 +92,13 @@
                         </div>
                     </div>
                     <div class="flex justify-center px-5 pb-8 text-center">
-                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24 mr-1">Cancel</button>
-                        {{-- <button type="button" class="btn btn-danger w-24">Delete</button> --}}
+                        <button type="button" data-tw-dismiss="modal" class="btn btn-outline-secondary w-24">Cancel</button>
+
                         <form action="{{ isset($activity->id) ? route('activities.destroy', $activity->id) : '#' }}" method="POST">
                             @auth
                                 @csrf
                                 @method('DELETE')
-                                <button type='submit' class="btn btn-danger w-24">
+                                <button type='submit' class="btn btn-danger w-24 ml-2">
                                     Delete
                                 </button>
                             @endauth
@@ -103,5 +113,12 @@
 <!-- END: Content -->
 </div>
 
-
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            // Fade out all flash messages
+            $('.flash-message').fadeOut(1000);
+        }, 2500); // 2.5 seconds
+    });
+</script>
 @endsection

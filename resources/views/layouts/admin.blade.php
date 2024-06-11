@@ -47,15 +47,6 @@
                         <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                     </ol>
                 </nav>
-                <!-- END: Breadcrumb -->
-                <!-- BEGIN: Search -->
-                <div class="intro-x relative mr-3 sm:mr-6">
-                    <form class="search hidden sm:block">
-                        <input type="text" class="search__input form-control border-transparent" placeholder="Search...">
-                        <i data-lucide="search" class="search__icon dark:text-slate-500"></i>
-                    </form>
-                </div>
-                <!-- END: Search -->
 
                 <!-- BEGIN: Account Menu -->
                 <div class="intro-x dropdown w-8 h-8">
@@ -76,21 +67,13 @@
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
 
-                                        <p :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="mt-3">
+                                        <p :href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit();" class="">
                                             Logout
                                         </p>
                                     </form>
                                 </a>
                             </li>
-                            {{-- <form method="POST" action="{{ route('logout') }}">
-                                @csrf
 
-                                <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                                    this.closest('form').submit();">
-                                    {{ __('Log Out') }}
-                                </x-dropdown-link>
-                            </form> --}}
                         </ul>
                     </div>
                 </div>
@@ -105,12 +88,12 @@
             <!-- BEGIN: Content -->
              @yield('content')
              @if (session()->has('success'))
-             <div id="flash-message" class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-green-600 bg-opacity-75 p-4 max-w-sm text-white">
+             <div id="flash-message" class="absolute left-1/2 transform -translate-x-1/2 bg-green-600 bg-opacity-75 p-4 max-w-sm text-white">
                      {{ session()->get('success') }}
                  </div>
              @endif
              @if (session()->has('error'))
-             <div id="flash-message" class="absolute top-0 left-1/2 transform -translate-x-1/2 bg-red-600 bg-opacity-75 p-4 max-w-sm text-white">
+             <div id="flash-message" class="absolute left-1/2 transform -translate-x-1/2 bg-red-600 bg-opacity-75 p-4 max-w-sm text-white">
                      {{ session()->get('error') }}
                  </div>
              @endif
@@ -126,13 +109,13 @@
         <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
         <!-- END: JS Assets-->
 
-        {{-- <script>
+        <script>
             $(document).ready(function() {
                 setTimeout(function() {
                     // Fade out the flash message
                     $('#flash-message').fadeOut(1000);
                 }, 2500); // 2 seconds
             });
-        </script> --}}
+        </script>
     </body>
 </html>

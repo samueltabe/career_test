@@ -32,6 +32,9 @@ class ActivityController extends Controller
     {
         $request->validate(['name' => 'required']);
         Auth::user()->activities()->create($request->all());
+
+        session()->flash('success','Activity Created successfully');
+
         return redirect()->route('activities.index');
     }
 

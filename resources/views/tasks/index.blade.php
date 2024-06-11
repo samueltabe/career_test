@@ -12,8 +12,7 @@
             <a href="{{ route('tasks.create') }}" class="btn btn-primary shadow-md mr-2">Add New Task</a>
             <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-auto">
                 <div class="w-56 relative text-slate-500">
-                    <input type="text" class="form-control w-56 box pr-10" placeholder="Search...">
-                    <i class="w-4 h-4 absolute my-auto inset-y-0 mr-3 right-0" data-lucide="search"></i>
+                    
                 </div>
             </div>
         </div>
