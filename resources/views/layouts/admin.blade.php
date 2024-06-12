@@ -101,13 +101,9 @@
         </div>
 
         <!-- BEGIN: JS Assets-->
-        {{-- <script src="../developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script> --}}
 
-        {{-- <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script> --}}
         <script src="{{ asset('dist/js/app.js') }}"></script>
-        <!-- for trix -->
-        <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
-        <!-- END: JS Assets-->
+
 
         <script>
             $(document).ready(function() {
